@@ -1,7 +1,7 @@
 // script.js
 
 // Replace this with your actual Gmail address
-const MY_EMAIL_ADDRESS = "myemail@gmail.com";
+const MY_EMAIL_ADDRESS = "dantimberlake62@gmail.com";
 
 // --- CART LOGIC ---
 let cart = JSON.parse(localStorage.getItem('sprinterCart')) || [];
