@@ -24,66 +24,8 @@
 
     <section class="section">
         <h1 class="section-title">Parts Catalog</h1>
-        <div class="grid">
-            <!-- Part 1 -->
-            <div class="card">
-                <!-- INSERT PART IMAGE HERE -->
-                <img src="images/placeholder-part1.jpg" alt="Brake Pad Set" onerror="this.src='https://picsum.photos/seed/brakes/400/300'">
-                <h3>OEM Brake Pad Set</h3>
-                <p>Front and rear brake pads for optimal stopping power. Fits all models.</p>
-                <div class="price">$120.00</div>
-                <button class="btn add-to-cart-btn" data-name="OEM Brake Pad Set" data-price="120.00">Add to Cart</button>
-            </div>
-            
-            <!-- Part 2 -->
-            <div class="card">
-                <!-- INSERT PART IMAGE HERE -->
-                <img src="images/placeholder-part2.jpg" alt="Fuel Filter" onerror="this.src='https://picsum.photos/seed/filter/400/300'">
-                <h3>Diesel Fuel Filter</h3>
-                <p>High-efficiency fuel filter for Sprinter diesel engines.</p>
-                <div class="price">$45.00</div>
-                <button class="btn add-to-cart-btn" data-name="Diesel Fuel Filter" data-price="45.00">Add to Cart</button>
-            </div>
-            
-            <!-- Part 3 -->
-            <div class="card">
-                <!-- INSERT PART IMAGE HERE -->
-                <img src="images/placeholder-part3.jpg" alt="Headlight Assembly" onerror="this.src='https://picsum.photos/seed/headlight/400/300'">
-                <h3>Headlight Assembly</h3>
-                <p>Complete front headlight assembly. Specify Left or Right in order notes.</p>
-                <div class="price">$250.00</div>
-                <button class="btn add-to-cart-btn" data-name="Headlight Assembly" data-price="250.00">Add to Cart</button>
-            </div>
-
-            <!-- Part 4 -->
-            <div class="card">
-                <!-- INSERT PART IMAGE HERE -->
-                <img src="images/placeholder-part4.jpg" alt="Alternator" onerror="this.src='https://picsum.photos/seed/alternator/400/300'">
-                <h3>14V 200A Alternator</h3>
-                <p>Heavy-duty alternator suitable for High Roof models with extra electronics.</p>
-                <div class="price">$310.00</div>
-                <button class="btn add-to-cart-btn" data-name="14V 200A Alternator" data-price="310.00">Add to Cart</button>
-            </div>
-
-            <!-- Part 5 -->
-            <div class="card">
-                <!-- INSERT PART IMAGE HERE -->
-                <img src="images/placeholder-part5.jpg" alt="Suspension Strut" onerror="this.src='https://picsum.photos/seed/suspension/400/300'">
-                <h3>Front Suspension Strut</h3>
-                <p>Gas-pressurized shock absorber for smooth ride quality.</p>
-                <div class="price">$185.00</div>
-                <button class="btn add-to-cart-btn" data-name="Front Suspension Strut" data-price="185.00">Add to Cart</button>
-            </div>
-
-            <!-- Part 6 -->
-            <div class="card">
-                <!-- INSERT PART IMAGE HERE -->
-                <img src="images/placeholder-part6.jpg" alt="Water Pump" onerror="this.src='https://picsum.photos/seed/waterpump/400/300'">
-                <h3>Engine Water Pump</h3>
-                <p>Coolant pump replacement including gasket.</p>
-                <div class="price">$95.00</div>
-                <button class="btn add-to-cart-btn" data-name="Engine Water Pump" data-price="95.00">Add to Cart</button>
-            </div>
+        <div class="grid" id="catalogPartsGrid">
+            <p style="text-align: center; grid-column: 1/-1;">Loading parts...</p>
         </div>
     </section>
 
@@ -105,6 +47,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

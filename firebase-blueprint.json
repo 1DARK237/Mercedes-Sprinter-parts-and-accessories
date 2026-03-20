@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "Part": {
+      "title": "Part",
+      "description": "A spare part for a Mercedes Sprinter",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the part" },
+        "description": { "type": "string", "description": "Short description" },
+        "price": { "type": "number", "description": "Price of the part" },
+        "currency": { "type": "string", "description": "Currency of the price (e.g. USD, GBP, EUR)" },
+        "imageUrl": { "type": "string", "description": "Base64 encoded image or URL" },
+        "category": { "type": "string", "enum": ["high-roof", "low-roof", "general"], "description": "Category of the part" },
+        "featured": { "type": "boolean", "description": "Whether to show on the home page" },
+        "createdAt": { "type": "number", "description": "Timestamp of creation" }
+      },
+      "required": ["name", "description", "price", "currency", "imageUrl", "category", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A customer order",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string", "description": "Customer's full name" },
+        "email": { "type": "string", "description": "Customer's email" },
+        "phone": { "type": "string", "description": "Customer's phone number" },
+        "address": { "type": "string", "description": "Delivery address" },
+        "notes": { "type": "string", "description": "Additional notes" },
+        "items": { "type": "array", "description": "List of items ordered" },
+        "totalAmount": { "type": "number", "description": "Total amount of the order" },
+        "status": { "type": "string", "enum": ["placed", "sent"], "description": "Status of the order" },
+        "createdAt": { "type": "number", "description": "Timestamp of creation" }
+      },
+      "required": ["fullName", "email", "phone", "address", "items", "totalAmount", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/parts/{partId}": {
+      "schema": { "$ref": "#/entities/Part" },
+      "description": "Collection of all spare parts"
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Collection of all customer orders"
+    }
+  }
+}

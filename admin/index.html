@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Sprinter Parts</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container { max-width: 1000px; margin: 2rem auto; padding: 0 20px; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        .part-list { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem; }
+        .part-row { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--light-gray); border: 1px solid #ddd; border-radius: 5px; }
+        .part-row img { width: 80px; height: 60px; object-fit: cover; border-radius: 4px; margin-right: 1rem; }
+        .part-info { flex: 1; display: flex; align-items: center; }
+        .part-actions { display: flex; gap: 10px; }
+        .hidden { display: none !important; }
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+        .modal-content { background: white; padding: 2rem; border-radius: 8px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; }
+        .preview-img { max-width: 100%; height: 200px; object-fit: contain; margin-top: 10px; display: none; }
+        
+        .admin-tabs { display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid #ddd; }
+        .admin-tab { padding: 10px 20px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; font-weight: bold; }
+        .admin-tab.active { border-bottom-color: var(--accent-color); color: var(--accent-color); }
+        
+        .order-card { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+        .order-header { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
+        .order-status { padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
+        .status-placed { background: #fff3cd; color: #856404; }
+        .status-sent { background: #d4edda; color: #155724; }
+        .order-items { margin: 10px 0; background: #f9f9f9; padding: 10px; border-radius: 4px; }
+        .order-item { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Sprinter Parts Admin</div>
+            <ul class="nav-links">
+                <li><a href="#" id="logoutBtn" class="hidden">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="admin-container">
+        <!-- Login Section -->
+        <div id="loginSection" class="form-container" style="text-align: center; margin-top: 4rem;">
+            <h2>Admin Login</h2>
+            <p style="margin: 1rem 0;">Please sign in with your authorized Google account.</p>
+            <button id="loginBtn" class="btn">Sign in with Google</button>
+            <p id="loginError" style="color: red; margin-top: 1rem;"></p>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboardSection" class="hidden">
+            <div class="admin-tabs">
+                <div class="admin-tab active" id="tabParts">Manage Parts</div>
+                <div class="admin-tab" id="tabOrders">View Orders</div>
+            </div>
+
+            <div id="partsView">
+                <div class="admin-header">
+                    <h2>Manage Parts</h2>
+                    <button id="addPartBtn" class="btn">Add New Part</button>
+                </div>
+                
+                <div id="partsList" class="part-list">
+                    <!-- Parts will be rendered here -->
+                    <p>Loading parts...</p>
+                </div>
+            </div>
+
+            <div id="ordersView" class="hidden">
+                <div class="admin-header">
+                    <h2>Customer Orders</h2>
+                </div>
+                <div id="ordersList">
+                    <!-- Orders will be rendered here -->
+                    <p>Loading orders...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Part Modal -->
+    <div id="partModal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="modalTitle" style="margin-bottom: 1rem;">Add Part</h2>
+            <form id="partForm">
+                <input type="hidden" id="partId">
+                <div class="form-group">
+                    <label for="partName">Part Name *</label>
+                    <input type="text" id="partName" required maxlength="99">
+                </div>
+                <div class="form-group">
+                    <label for="partDesc">Description *</label>
+                    <textarea id="partDesc" required maxlength="499"></textarea>
+                </div>
+                <div class="form-group" style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <label for="partPrice">Price *</label>
+                        <input type="number" id="partPrice" required min="0" step="0.01">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="partCurrency">Currency *</label>
+                        <select id="partCurrency" required>
+                            <option value="USD">USD ($)</option>
+                            <option value="GBP">GBP (£)</option>
+                            <option value="EUR">EUR (€)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="partCategory">Category *</label>
+                    <select id="partCategory" required>
+                        <option value="high-roof">High Roof</option>
+                        <option value="low-roof">Low Roof</option>
+                        <option value="general">General / Both</option>
+                    </select>
+                </div>
+                <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                    <input type="checkbox" id="partFeatured" style="width: auto;">
+                    <label for="partFeatured" style="margin: 0;">Feature on Home Page</label>
+                </div>
+                <div class="form-group">
+                    <label for="partImage">Upload Image * (Max 800KB)</label>
+                    <input type="file" id="partImage" accept="image/*">
+                    <input type="hidden" id="partImageUrl">
+                    <img id="imagePreview" class="preview-img" alt="Preview">
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 1rem;">
+                    <button type="submit" class="btn" style="flex: 1;">Save Part</button>
+                    <button type="button" id="cancelBtn" class="btn" style="flex: 1; background: #666;">Cancel</button>
+                </div>
+                <p id="formError" style="color: red; margin-top: 1rem;"></p>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
