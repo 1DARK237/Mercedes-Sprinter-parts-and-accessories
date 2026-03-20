@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Sprinter Parts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <!-- INSERT LOGO HERE -->
+                Sprinter Parts
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="order.html">Order <span id="cartCount" class="cart-badge">0</span></a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="section">
+        <h1 class="section-title">Contact Us</h1>
+        <div class="form-container">
+            <p style="text-align: center; margin-bottom: 20px;">Have a question about a specific part? Need help finding something for your Sprinter? Send us a message!</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" required placeholder="How can we help you?"></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Send Message via Email</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a> | 
+                <a href="catalog.html">Catalog</a> | 
+                <a href="order.html">Order</a> | 
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="social-links">
+                <!-- INSERT ICONS HERE -->
+                <a href="#FACEBOOK_LINK" target="_blank">Facebook</a>
+                <a href="#LINKEDIN_LINK" target="_blank">LinkedIn</a>
+                <a href="#TELEGRAM_LINK" target="_blank">Telegram</a>
+            </div>
+            <p>&copy; 2026 Sprinter Parts. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

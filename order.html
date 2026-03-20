@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order | Sprinter Parts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <!-- INSERT LOGO HERE -->
+                Sprinter Parts
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="order.html">Order <span id="cartCount" class="cart-badge">0</span></a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="section">
+        <h1 class="section-title">Your Cart & Order</h1>
+        
+        <div id="cartDisplay" class="cart-container">
+            <!-- Cart items will be rendered here by JavaScript -->
+        </div>
+
+        <div class="form-container" id="checkoutFormContainer" style="display: none;">
+            <h2 style="margin-bottom: 20px; color: var(--accent-color);">Checkout Details</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Delivery Address *</label>
+                    <textarea id="address" required placeholder="Full shipping address"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Additional Notes</label>
+                    <textarea id="notes" placeholder="Vehicle year, model (High/Low roof), specific requirements..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Submit Order via Email</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a> | 
+                <a href="catalog.html">Catalog</a> | 
+                <a href="order.html">Order</a> | 
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="social-links">
+                <!-- INSERT ICONS HERE -->
+                <a href="#FACEBOOK_LINK" target="_blank">Facebook</a>
+                <a href="#LINKEDIN_LINK" target="_blank">LinkedIn</a>
+                <a href="#TELEGRAM_LINK" target="_blank">Telegram</a>
+            </div>
+            <p>&copy; 2026 Sprinter Parts. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
